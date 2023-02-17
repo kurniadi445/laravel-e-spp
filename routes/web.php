@@ -34,6 +34,7 @@ Route::middleware('auth')->group(function () {
         Route::name('master-data.')->group(function () {
             Route::get('/siswa', [SiswaController::class, 'index'])->name('siswa');
             Route::get('/siswa/data', [SiswaController::class, 'data'])->name('siswa.data');
+            Route::get('/siswa/hapus/{uuid}', [SiswaController::class, 'hapus'])->whereUuid('uuid')->name('siswa.hapus');
         });
     });
 });
