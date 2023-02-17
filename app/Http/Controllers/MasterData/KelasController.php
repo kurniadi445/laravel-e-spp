@@ -65,4 +65,17 @@ class KelasController extends Controller
             'recordsTotal' => $jumlahKelas
         ]);
     }
+
+    public function hapus($uuid)
+    {
+        $kelas = $this->kelasRepository->cariSatuBerdasarkanUuid($uuid);
+
+        if ($kelas) {
+            $this->kelasRepository->hapusBerdasarkanUuid($uuid);
+
+            return to_route('master-data.kelas')->with('status');
+        }
+
+        abort(404);
+    }
 }

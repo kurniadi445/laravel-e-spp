@@ -53,11 +53,11 @@ $(function () {
             {
                 className: 'text-center',
                 orderable: false,
-                render: function () {
+                render: function (data, tipe, baris) {
                     return `
                         <div class="d-inline d-md-flex justify-content-md-center">
                             <a class="mr-2" href="#"><i class="fa-edit far"></i></a>
-                            <a class="text-danger" href="#"><i class="fa-trash-alt far"></i></a>
+                            <a class="text-danger" href="${window.location.origin}/master-data/kelas/hapus/${baris['uuid']}"><i class="fa-trash-alt far"></i></a>
                         </div>
                     `;
                 },

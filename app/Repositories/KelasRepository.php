@@ -17,6 +17,7 @@ class KelasRepository
             $kolom[] = DB::raw('ROW_NUMBER() over (order by nama_kelas) no');
         }
 
+        $kolom[] = 'uuid';
         $kolom[] = 'nama_kelas';
         $kolom[] = 'keterangan';
 
@@ -37,5 +38,19 @@ class KelasRepository
     public function hitung($cari = null): int
     {
         return $this->cariSemua($cari)->count();
+    }
+
+    public function cariSatuBerdasarkanUuid($uuid): object|null
+    {
+        $kelas = Kelas::query()->where('uuid', '=', $uuid);
+
+        return $kelas->first();
+    }
+
+    public function hapusBerdasarkanUuid($uuid): void
+    {
+        $kelas = Kelas::query()->where('uuid', '=', $uuid);
+
+        $kelas->delete();
     }
 }
