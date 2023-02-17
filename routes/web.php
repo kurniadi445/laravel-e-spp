@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AutentikasiController;
 use App\Http\Controllers\DasborController;
+use App\Http\Controllers\MasterData\KelasController;
 use App\Http\Controllers\MasterData\SiswaController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,6 +33,8 @@ Route::middleware('auth')->group(function () {
     // master data
     Route::prefix('master-data')->group(function () {
         Route::name('master-data.')->group(function () {
+            Route::get('/kelas', [KelasController::class, 'index'])->name('kelas');
+            Route::get('/kelas/data', [KelasController::class, 'data'])->name('kelas.data');
             Route::get('/siswa', [SiswaController::class, 'index'])->name('siswa');
             Route::get('/siswa/data', [SiswaController::class, 'data'])->name('siswa.data');
             Route::get('/siswa/hapus/{uuid}', [SiswaController::class, 'hapus'])->whereUuid('uuid')->name('siswa.hapus');
