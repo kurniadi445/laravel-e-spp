@@ -27,12 +27,18 @@
                 </li>
                 {{-- dasbor --}}
                 {{-- master data --}}
-                <li @class(['menu-open' => url()->current() === route('master-data.siswa'), 'nav-item'])>
-                    <a @class(['active' => url()->current() === route('master-data.siswa'), 'nav-link']) href="#">
+                <li @class(['menu-open' => in_array(url()->current(), [route('master-data.kelas'), route('master-data.siswa')]), 'nav-item'])>
+                    <a @class(['active' => in_array(url()->current(), [route('master-data.kelas'), route('master-data.siswa')]), 'nav-link']) href="#">
                         <i class="fa-book fas nav-icon"></i>
                         <p>Master Data <i class="fa-angle-left fas right"></i></p>
                     </a>
                     <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a @class(['active' => url()->current() === route('master-data.kelas'), 'nav-link']) href="{{ route('master-data.kelas') }}">
+                                <i class="fa-circle far nav-icon"></i>
+                                <p>Kelas</p>
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a @class(['active' => url()->current() === route('master-data.siswa'), 'nav-link']) href="{{ route('master-data.siswa') }}">
                                 <i class="fa-circle far nav-icon"></i>
