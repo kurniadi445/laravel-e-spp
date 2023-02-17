@@ -26,6 +26,22 @@
                     </a>
                 </li>
                 {{-- dasbor --}}
+                {{-- master data --}}
+                <li @class(['menu-open' => url()->current() === route('master-data.siswa'), 'nav-item'])>
+                    <a @class(['active' => url()->current() === route('master-data.siswa'), 'nav-link']) href="#">
+                        <i class="fa-book fas nav-icon"></i>
+                        <p>Master Data <i class="fa-angle-left fas right"></i></p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a @class(['active' => url()->current() === route('master-data.siswa'), 'nav-link']) href="{{ route('master-data.siswa') }}">
+                                <i class="fa-circle far nav-icon"></i>
+                                <p>Siswa</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                {{-- master data --}}
                 {{-- keluar --}}
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('autentikasi.keluar') }}">
