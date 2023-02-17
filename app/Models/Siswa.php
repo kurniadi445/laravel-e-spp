@@ -10,4 +10,6 @@ class Siswa extends Model
     use HasFactory;
 
     protected $table = 'siswa';
+
+    public $timestamps = false;
 }

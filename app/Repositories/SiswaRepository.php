@@ -17,6 +17,7 @@ class SiswaRepository
             $kolom[] = DB::raw('ROW_NUMBER() over (order by nis) no');
         }
 
+        $kolom[] = 'uuid';
         $kolom[] = 'nis';
         $kolom[] = 'nisn';
         $kolom[] = 'nama_lengkap';
@@ -47,5 +48,19 @@ class SiswaRepository
     public function hitung($cari = null): int
     {
         return $this->cariSemua($cari)->count();
+    }
+
+    public function cariSatuBerdasarkanUuid($uuid): object|null
+    {
+        $siswa = Siswa::query()->where('uuid', '=', $uuid);
+
+        return $siswa->first();
+    }
+
+    public function perbaruiBerdasarkanUuid($uuid, $nilai): void
+    {
+        $siswa = Siswa::query()->where('uuid', '=', $uuid);
+
+        $siswa->update($nilai);
     }
 }

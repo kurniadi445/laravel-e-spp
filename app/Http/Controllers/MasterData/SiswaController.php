@@ -70,4 +70,19 @@ class SiswaController extends Controller
             'recordsTotal' => $jumlahSiswa
         ]);
     }
+
+    public function hapus($uuid)
+    {
+        $siswa = $this->siswaRepository->cariSatuBerdasarkanUuid($uuid);
+
+        if ($siswa) {
+            $this->siswaRepository->perbaruiBerdasarkanUuid($uuid, [
+                'tanggal_dihapus' => date('Y-m-d H:i:s')
+            ]);
+
+            return to_route('master-data.siswa')->with('status');
+        }
+
+        abort(404);
+    }
 }
