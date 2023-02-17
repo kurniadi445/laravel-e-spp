@@ -31,7 +31,8 @@ class ViewServiceProvider extends ServiceProvider
 
         // pengguna
         View::composer([
-            'tampilan.dasbor'
+            'tampilan.dasbor',
+            'tampilan.master-data.*'
         ], PenggunaComposer::class);
     }
 }
