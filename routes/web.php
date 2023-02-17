@@ -35,6 +35,7 @@ Route::middleware('auth')->group(function () {
         Route::name('master-data.')->group(function () {
             Route::get('/kelas', [KelasController::class, 'index'])->name('kelas');
             Route::get('/kelas/data', [KelasController::class, 'data'])->name('kelas.data');
+            Route::get('/kelas/hapus/{uuid}', [KelasController::class, 'hapus'])->whereUuid('uuid')->name('kelas.hapus');
             Route::get('/siswa', [SiswaController::class, 'index'])->name('siswa');
             Route::get('/siswa/data', [SiswaController::class, 'data'])->name('siswa.data');
             Route::get('/siswa/hapus/{uuid}', [SiswaController::class, 'hapus'])->whereUuid('uuid')->name('siswa.hapus');
