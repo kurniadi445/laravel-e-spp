@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AutentikasiController;
 use App\Http\Controllers\DasborController;
+use App\Http\Controllers\MasterData\SiswaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,4 +28,12 @@ Route::prefix('autentikasi')->group(function () {
 Route::middleware('auth')->group(function () {
     // dasbor
     Route::get('/', [DasborController::class, 'index'])->name('dasbor');
+
+    // master data
+    Route::prefix('master-data')->group(function () {
+        Route::name('master-data.')->group(function () {
+            Route::get('/siswa', [SiswaController::class, 'index'])->name('siswa');
+            Route::get('/siswa/data', [SiswaController::class, 'data'])->name('siswa.data');
+        });
+    });
 });
